@@ -29,7 +29,6 @@ describe('errorHandler', () => {
     expect(res.body).toEqual({ error: true, message: 'teapot' })
   })
 
-  // DEVOPS-14 — Nadjim KACEMI : cas partiels
   it('keeps a custom status with the default message', () => {
     const res = makeRes()
     errorHandler({ status: 404 }, {}, res, () => {})

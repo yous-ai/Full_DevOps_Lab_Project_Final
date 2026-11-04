@@ -20,7 +20,6 @@ describe('GET /version', () => {
     expect(res.headers['content-type']).toMatch(/application\/json/)
   })
 
-  // DEVOPS-14 — Chaina SAKTOUN : cohérence avec package.json
   it('matches the version in package.json (semver x.y.z)', async () => {
     const res = await request(app).get('/version')
     expect(res.body.version).toBe(getPackageInfo().version)

@@ -26,7 +26,7 @@ if (fs.existsSync(autoDir)) {
   const files = fs.readdirSync(autoDir).filter(f => f.endsWith('.route.js'))
   for (const f of files) {
     const full = path.join(autoDir, f)
-    // import() dynamique (et non require) : Vitest peut ainsi mesurer la couverture des routes
+    // import() au lieu de require() pour que la couverture des routes soit mesurée
     const mod = await import(pathToFileURL(full).href)
     const router = mod.default || mod
     if (router) app.use('/', router)

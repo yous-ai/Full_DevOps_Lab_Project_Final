@@ -1,6 +1,5 @@
 /**
  * Integration tests for the base routes of src/app.js.
- * DEVOPS-14 — Youssouf SAOULI
  */
 import request from 'supertest'
 import app from '../src/app.js'
