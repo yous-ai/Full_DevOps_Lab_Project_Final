@@ -1,4 +1,3 @@
-// Seuils de couverture appliqués par Vitest (la clé "vitest" de package.json n'est pas lue)
 import { defineConfig } from 'vitest/config'
 
 export default defineConfig({
