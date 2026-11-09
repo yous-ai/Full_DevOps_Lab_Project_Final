@@ -28,4 +28,24 @@ describe('errorHandler', () => {
     expect(res.statusCode).toBe(418)
     expect(res.body).toEqual({ error: true, message: 'teapot' })
   })
+
+  it('keeps a custom status with the default message', () => {
+    const res = makeRes()
+    errorHandler({ status: 404 }, {}, res, () => {})
+    expect(res.statusCode).toBe(404)
+    expect(res.body).toEqual({ error: true, message: 'Internal Server Error' })
+  })
+
+  it('defaults to 500 when only a message is given', () => {
+    const res = makeRes()
+    errorHandler(new Error('db down'), {}, res, () => {})
+    expect(res.statusCode).toBe(500)
+    expect(res.body.message).toBe('db down')
+  })
+
+  it('handles an undefined error', () => {
+    const res = makeRes()
+    errorHandler(undefined, {}, res, () => {})
+    expect(res.statusCode).toBe(500)
+  })
 })
